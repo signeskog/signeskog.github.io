@@ -1,4 +1,4 @@
-REMOVING ADAPTORS AND MAPPING GENOMIC FILES ON A WINDOWS
+<b> REMOVING ADAPTORS AND MAPPING GENOMIC FILES ON A WINDOWS </b>
 
 Preforming the first "clean up" steps of sequencing data is quite straight forward in a Linux environment. Although, not all have a linux computer on standby in teir office, nor
 cloud space for big virtual machines. And still, there are some of us out there that have a background in wet lab biology, thrown into sequence analysis by an eager PI and with
@@ -13,11 +13,11 @@ data analysis, where we will go from fasta files downloaded from basespace (as m
 
 Seqpac is an R based package, working in both Linux, Windows and Mac. In R, print and run
 
-<devtools::install_github("Danis102/seqpac", upgrade="never", build_manual=TRUE, build_vignettes=TRUE)>
+<code>devtools::install_github("Danis102/seqpac", upgrade="never", build_manual=TRUE, build_vignettes=TRUE)</code>
 
 and then
 
-<library(seqpac)>
+<code>library(seqpac)</code>
 
 to open up the package.
 
@@ -39,7 +39,7 @@ make_counts can take several details for you, like if and how strong you'd like 
 But let's start with the easiest example. Let's say I have my fasta files in "D:/user/FASTA" and that I used Illumina adaptors in my laboratory preparation. Then, I can just
 run this command:
 
-<counts <- make_counts(input="D:/user/FASTA", trimming=TRUE)>
+<code> counts <- make_counts(input="D:/user/FASTA", trimming=TRUE) </code>
 
 where I add the position on my computer in the input and telling the function that I want it to trim my fasta files with trimming=TRUE. That's it!
 
@@ -47,7 +47,7 @@ But what if I used a NEB-next adaptor, and for the sake of computer power wants 
 (this can really help to speed up the coputational analysis, without removing sequences contributing to the analysis, see our preprint of seqpac for more information!)?
 Then we could run make_counts, but with some modifications.
 
-<counts <- make_counts(input="D:/user/FASTA", trimming=TRUE, parse="default_neb", evidence=c(experiment=5, sample=1), plot=TRUE)>
+<code> counts <- make_counts(input="D:/user/FASTA", trimming=TRUE, parse="default_neb", evidence=c(experiment=5, sample=1), plot=TRUE) </code>
 
 See that I added <plot=TRUE> too? This gives us a neat illustrative figure of how our samples behave, how the counts are distributed and how our evidence filters
 affects the counts.
@@ -56,4 +56,4 @@ If you have a in-house adaptor, please check ?make_trim and ?make_counts example
 
 Finally, it can sometimes be nice just to run the adaptor trimming alone. I then use the make_trim function, saving the fasta files after trimming into an output file.
 
-<make_trim(input="D:/user/FASTA", output="D:/user/FASTA/output", adapt_3 = "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACTA")
+<code> make_trim(input="D:/user/FASTA", output="D:/user/FASTA/output", adapt_3 = "AGATCGGAAGAGCACACGTCTGAACTCCAGTCACTA") </code>
